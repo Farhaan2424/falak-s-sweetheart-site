@@ -82,12 +82,12 @@ function Index() {
 
       <section id="home" className="reveal-section relative z-10 flex min-h-[92svh] items-center justify-center px-6 py-24 text-center">
         <div className="mx-auto max-w-4xl">
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.28em] text-primary">September 17 · just for you</p>
-          <div className="mb-5 text-4xl animate-gentle-bob" aria-hidden="true">🎀</div>
-          <h1 className="font-script text-6xl leading-[1.08] text-primary sm:text-7xl md:text-8xl lg:text-9xl">Happy Birthday Falak <span aria-hidden="true">💗</span></h1>
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.28em] text-primary">A little birthday letter · just for you</p>
+          <div className="mb-5 text-4xl animate-gentle-bob" aria-hidden="true">୨୧</div>
+          <h1 className="font-script text-6xl leading-[1.08] text-primary sm:text-7xl md:text-8xl lg:text-9xl">Happy Birthday Falak <Heart className="ml-2 inline h-[.52em] w-[.52em] fill-current align-middle" aria-label="with love" /></h1>
           <p className="mx-auto mt-7 max-w-xl text-base leading-8 text-muted-foreground sm:text-lg">A little corner of the internet, made slowly and lovingly, to celebrate all the warmth you bring into the world.</p>
           <Button variant="love" size="lg" className="mt-10" onClick={() => scrollTo("memories")}>
-            Do you want to see more? <span aria-hidden="true">🎀</span>
+            Do you want to see more? <span className="text-lg" aria-hidden="true">୨୧</span>
           </Button>
           <div className="mt-12 flex items-center justify-center gap-3 text-xs uppercase tracking-[0.18em] text-muted-foreground"><span className="h-px w-12 bg-border" /> unwrap your letter <span className="h-px w-12 bg-border" /></div>
         </div>
@@ -100,7 +100,7 @@ function Index() {
             {memories.map((caption, index) => (
               <article key={caption} className={`polaroid ${index % 2 === 0 ? "rotate-left" : "rotate-right"}`}>
                 <div className="photo-placeholder"><Image className="h-8 w-8" strokeWidth={1.5} /><span>Add your photo here</span><span className="text-xs opacity-70">Photo {String(index + 1).padStart(2, "0")}</span></div>
-                <p className="mt-4 text-center font-medium text-foreground">{caption} <span aria-hidden="true">💕</span></p>
+                <p className="mt-4 text-center font-medium text-foreground">{caption} <span className="text-primary" aria-hidden="true">♡</span></p>
               </article>
             ))}
           </div>
@@ -109,7 +109,7 @@ function Index() {
 
       <section id="video" className="reveal-section relative z-10 bg-secondary/45 px-6 py-24 md:py-32">
         <div className="mx-auto max-w-4xl text-center">
-          <p className="section-kicker">Press play when you’re ready</p><h2 className="section-title">A little something for you <span aria-hidden="true">🎥</span></h2>
+          <p className="section-kicker">Press play when you’re ready</p><h2 className="section-title">A little something for you <Video className="ml-2 inline h-7 w-7 text-primary" aria-hidden="true" /></h2>
           <div className="video-frame mt-10"><div className="flex aspect-video flex-col items-center justify-center gap-4 rounded-3xl bg-muted/55 text-primary"><span className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-love"><Play className="ml-1 h-7 w-7" fill="currentColor" /></span><div><p className="font-semibold">Add your video here</p><p className="mt-1 text-sm text-muted-foreground">A favorite clip, message, or montage</p></div></div></div>
         </div>
       </section>
@@ -147,7 +147,7 @@ function Index() {
       <footer className="relative z-10 overflow-hidden px-6 py-24 text-center">
         <div className="rising-hearts" aria-hidden="true"><span>♡</span><span>♡</span><span>♥</span><span>♡</span><span>♡</span></div>
         <Video className="mx-auto mb-5 h-5 w-5 text-primary/50" aria-hidden="true" />
-        <p className="font-script text-4xl text-primary">For Falak, with all my heart</p><p className="mt-3 text-sm text-muted-foreground">Made with <span aria-label="love">💗</span> and a little bit of magic.</p>
+        <p className="font-script text-4xl text-primary">For Falak, with all my heart</p><p className="mt-3 flex items-center justify-center gap-1.5 text-sm text-muted-foreground">Made with <Heart className="h-4 w-4 fill-current text-primary" aria-label="love" /> and a little bit of magic.</p>
       </footer>
     </main>
   );

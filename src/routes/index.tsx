@@ -1,5 +1,5 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { ChevronDown, Heart, Image, Music2, Pause, Play, Printer, Sparkles, Video } from "lucide-react";
+import { ChevronDown, Heart, Music2, Pause, Play, Printer, Sparkles, Video } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";

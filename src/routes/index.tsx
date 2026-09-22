@@ -1,5 +1,5 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { Heart, Image, Music2, Pause, Play, Printer, Sparkles, Video } from "lucide-react";
+import { ChevronDown, Heart, Music2, Pause, Play, Printer, Sparkles, Video } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -28,10 +28,10 @@ const memories = [
   "A memory to remember",
 ];
 const reasons = [
-  ["01", "Your kindness", "You make ordinary moments feel gentle and safe."],
-  ["02", "Your laugh", "It has a way of making every room feel warmer."],
-  ["03", "The little things", "You notice what matters, even when no one else does."],
-  ["04", "Simply you", "There is nobody else I would rather make memories with."],
+  ["Your kindness", "I love how kind you are, how you treat me. You never show any arrogance — you are the sweetest soul."],
+  ["Your laugh", "I love your smile — the way your face glows when you smile, the way your chubby cheeks shine. I want to see that smile forever, and I want to be the reason you smile."],
+  ["The little things", "The little things you do for me — taking care of me like a child, keeping me posted of everything you do, sharing everything with me."],
+  ["Simply you", "I just love you. I can't explain in words how much I love you, how much you mean to me. I am grateful to have you, my baby. I love you and will always love you, forever and ever."],
 ];
 
 function scrollTo(id: string) {
@@ -86,24 +86,24 @@ function Index() {
 
       <section id="home" className="reveal-section relative z-10 flex min-h-[92svh] items-center justify-center px-6 py-24 text-center">
         <div className="mx-auto max-w-4xl">
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.28em] text-primary">A little birthday letter · just for you</p>
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.28em] text-primary">A special birthday wish just for you</p>
           <div className="mb-5 text-4xl animate-gentle-bob" aria-hidden="true">୨୧</div>
           <h1 className="font-script text-6xl leading-[1.08] text-primary sm:text-7xl md:text-8xl lg:text-9xl">Happy Birthday Falak <Heart className="ml-2 inline h-[.52em] w-[.52em] fill-current align-middle" aria-label="with love" /></h1>
-          <p className="mx-auto mt-7 max-w-xl text-base leading-8 text-muted-foreground sm:text-lg">A little corner of the internet, made slowly and lovingly, to celebrate all the warmth you bring into the world.</p>
+          <p className="mx-auto mt-7 max-w-xl text-base leading-8 text-muted-foreground sm:text-lg">Made with love to celebrate your special day. I hope you will like it ♡</p>
           <Button variant="love" size="lg" className="mt-10" onClick={() => scrollTo("memories")}>
             Do you want to see more? <span className="text-lg" aria-hidden="true">୨୧</span>
           </Button>
-          <div className="mt-12 flex items-center justify-center gap-3 text-xs uppercase tracking-[0.18em] text-muted-foreground"><span className="h-px w-12 bg-border" /> unwrap your letter <span className="h-px w-12 bg-border" /></div>
+          <div className="mt-12 flex flex-col items-center gap-2 text-xs uppercase tracking-[0.18em] text-muted-foreground"><div className="flex items-center gap-3"><span className="h-px w-12 bg-border" /> go ahead, see <span className="h-px w-12 bg-border" /></div><ChevronDown className="h-4 w-4 animate-gentle-bob text-primary" aria-hidden="true" /></div>
         </div>
       </section>
 
       <section id="memories" className="reveal-section relative z-10 px-6 py-24 md:py-32">
         <div className="mx-auto max-w-6xl">
-          <header className="mb-14 text-center"><p className="section-kicker">A few pieces of us</p><h2 className="section-title">Our sweetest memories</h2><p className="section-copy">Six little windows for the moments you want to keep close.</p></header>
+          <header className="mb-14 text-center"><p className="section-kicker">A few pieces of you</p><h2 className="section-title">Your sweetest smile</h2></header>
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {memories.map((caption, index) => (
               <article key={caption} className={`polaroid ${index % 2 === 0 ? "rotate-left" : "rotate-right"}`}>
-                <div className="photo-placeholder"><Image className="h-8 w-8" strokeWidth={1.5} /><span>Add your photo here</span><span className="text-xs opacity-70">Photo {String(index + 1).padStart(2, "0")}</span></div>
+                <div className="photo-placeholder"><span className="text-3xl text-primary/25" aria-hidden="true">♡</span></div>
                 <p className="mt-4 text-center font-medium text-foreground">{caption} <span className="text-primary" aria-hidden="true">♡</span></p>
               </article>
             ))}
@@ -127,9 +127,8 @@ function Index() {
             <div className="mt-7 space-y-5 text-base leading-8 text-muted-foreground sm:text-lg">
               <p>Some people make life brighter simply by being in it. You are one of those rare people—the kind whose presence feels like a favorite song and whose kindness stays long after the moment has passed.</p>
               <p>On your birthday, I hope you remember how deeply you are appreciated. May this next chapter bring soft mornings, loud laughter, brave dreams, and a hundred little reasons to smile.</p>
-              <p>This space is waiting for the words only you two share. Replace this letter with your own memories, hopes, and all the things that deserve to be said.</p>
             </div>
-            <div className="mt-10 text-right"><p className="text-sm text-muted-foreground">Signed with love,</p><p className="mt-1 font-script text-4xl text-primary">Always yours ♡</p></div>
+            <div className="mt-10 text-right"><p className="text-sm text-muted-foreground">Signed with love,</p><p className="mt-1 font-script text-4xl text-primary">Always yours ♡</p><p className="mt-2 font-script text-3xl text-primary">Farhaan</p></div>
           </article>
         </div>
       </section>
@@ -138,10 +137,10 @@ function Index() {
         <div className="mx-auto max-w-5xl text-center">
           <p className="section-kicker">A tiny extra surprise</p><h2 className="section-title">Reasons I love you</h2><p className="section-copy">Tap each note to unfold a little reason.</p>
           <div className="mt-12 grid gap-5 sm:grid-cols-2">
-            {reasons.map(([number, title, reason], index) => {
+            {reasons.map(([title, reason], index) => {
               const isFlipped = flipped.includes(index);
               return <button key={title} type="button" aria-pressed={isFlipped} onClick={() => setFlipped((values) => values.includes(index) ? values.filter((item) => item !== index) : [...values, index])} className={`reason-card ${isFlipped ? "is-flipped" : ""}`}>
-                <span className="reason-card-inner"><span className="reason-face reason-front"><span className="text-xs font-bold tracking-[0.2em] text-primary/70">{number}</span><Heart className="h-7 w-7 text-primary" /><strong className="text-lg">{title}</strong><span className="text-xs text-muted-foreground">Tap to reveal</span></span><span className="reason-face reason-back"><Sparkles className="h-6 w-6 text-primary" /><strong className="font-script text-3xl text-primary">{title}</strong><span className="max-w-xs text-sm leading-6 text-muted-foreground">{reason}</span></span></span>
+                <span className="reason-card-inner"><span className="reason-face reason-front"><span className="text-xs font-semibold uppercase tracking-[0.25em] text-primary/70">Tap to reveal</span></span><span className="reason-face reason-back"><Sparkles className="h-6 w-6 text-primary" /><strong className="font-script text-3xl text-primary">{title}</strong><span className="max-w-xs text-sm leading-6 text-muted-foreground">{reason}</span></span></span>
               </button>;
             })}
           </div>

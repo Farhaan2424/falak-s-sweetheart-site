@@ -59,7 +59,7 @@ function PrintableCard() {
           </article>
           <article className="print-panel print-front-panel">
             <div className="print-front-ornament" aria-hidden="true">୨୧</div>
-            <p className="text-xs font-bold uppercase text-primary">A little birthday letter · just for you</p>
+            <p className="text-xs font-bold uppercase text-primary">A special birthday wish just for you</p>
             <h1 className="mt-5 font-script text-7xl leading-none text-primary">Happy Birthday<br />Falak</h1>
             <Heart className="mt-7 h-8 w-8 fill-current text-primary" aria-label="with love" />
             <p className="mt-6 max-w-xs text-center text-sm leading-6 text-muted-foreground">For all the warmth you bring into the world.</p>
@@ -71,7 +71,7 @@ function PrintableCard() {
         <p className="print-sheet-label">Inside · page 2</p>
         <section className="print-sheet print-sheet-inside" aria-label="Inside of folded birthday card">
           <article className="print-panel print-inside-left">
-            <p className="text-xs font-bold uppercase text-primary">A few pieces of us</p>
+            <p className="text-xs font-bold uppercase text-primary">A few pieces of you</p>
             <div className="mt-5 grid w-full grid-cols-2 gap-4">
               <PhotoSpace label="Memory one" />
               <PhotoSpace label="Memory two" />
@@ -93,6 +93,7 @@ function PrintableCard() {
             <div className="mt-7 text-right">
               <p className="text-xs text-muted-foreground">Signed with love,</p>
               <p className="mt-1 font-script text-4xl text-primary">Always yours ♡</p>
+              <p className="mt-1 font-script text-3xl text-primary">Farhaan</p>
             </div>
           </article>
         </section>

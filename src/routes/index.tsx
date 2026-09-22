@@ -1,5 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { Heart, Image, Music2, Pause, Play, Sparkles, Video } from "lucide-react";
+import { Link, createFileRoute } from "@tanstack/react-router";
+import { Heart, Image, Music2, Pause, Play, Printer, Sparkles, Video } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -79,6 +79,10 @@ function Index() {
           {musicNotice ? <Pause /> : <Music2 />}
         </Button>
       </div>
+
+      <Button variant="outline" className="fixed bottom-5 left-5 z-40 rounded-full bg-background/90 shadow-soft backdrop-blur" asChild>
+        <Link to="/print"><Printer /> Printable card</Link>
+      </Button>
 
       <section id="home" className="reveal-section relative z-10 flex min-h-[92svh] items-center justify-center px-6 py-24 text-center">
         <div className="mx-auto max-w-4xl">

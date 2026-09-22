@@ -5,3 +5,4 @@
 - [x] Add six photo placeholders and one video placeholder
 - [x] Add the open-letter section and interactive reason cards
 - [x] Verify desktop and mobile presentation and interactions
+- [x] Add and verify an A4 folded printable birthday card

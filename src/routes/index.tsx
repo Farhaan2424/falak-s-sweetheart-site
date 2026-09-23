@@ -3,6 +3,8 @@ import { ChevronDown, Heart, Music2, Pause, Play, Printer, Sparkles, Video } fro
 import { useEffect, useState } from "react";
 
 import { Confetti, fireConfetti } from "@/components/Confetti";
+import { FlowerSketch, HeartSketch, LaceEdge, RibbonSketch } from "@/components/Sketches";
+import { TypedLine } from "@/components/TypedLine";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/")({
@@ -43,6 +45,8 @@ function Index() {
   const [activeSection, setActiveSection] = useState("home");
   const [flipped, setFlipped] = useState<number[]>([]);
   const [musicNotice, setMusicNotice] = useState(false);
+  const [letterOpen, setLetterOpen] = useState(false);
+  const [candleOut, setCandleOut] = useState(false);
 
   useEffect(() => {
     const nodes = sections.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];

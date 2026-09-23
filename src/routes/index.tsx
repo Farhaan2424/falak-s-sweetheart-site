@@ -2,6 +2,7 @@ import { Link, createFileRoute } from "@tanstack/react-router";
 import { ChevronDown, Heart, Music2, Pause, Play, Printer, Sparkles, Video } from "lucide-react";
 import { useEffect, useState } from "react";
 
+import { Confetti, fireConfetti } from "@/components/Confetti";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/")({

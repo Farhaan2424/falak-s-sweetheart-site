@@ -90,12 +90,15 @@ function Index() {
         <Link to="/print"><Printer /> Printable card</Link>
       </Button>
 
-      <section id="home" className="reveal-section relative z-10 flex min-h-[92svh] items-center justify-center px-6 py-24 text-center">
+      <section id="home" className="wash-cream reveal-section relative z-10 flex min-h-[92svh] items-center justify-center px-6 py-24 text-center">
+        <RibbonSketch className="left-[4%] top-[12%] hidden md:block" />
+        <FlowerSketch className="right-[5%] bottom-[14%] hidden md:block" />
         <div className="mx-auto max-w-4xl">
           <p className="mb-4 text-xs font-bold uppercase tracking-[0.28em] text-primary">A special birthday wish just for you</p>
           <div className="mb-5 text-4xl animate-gentle-bob" aria-hidden="true">୨୧</div>
           <h1 className="font-script text-6xl leading-[1.08] text-primary sm:text-7xl md:text-8xl lg:text-9xl">Happy Birthday Falak <Heart className="ml-2 inline h-[.52em] w-[.52em] fill-current align-middle" aria-label="with love" /></h1>
-          <p className="mx-auto mt-7 max-w-xl text-base leading-8 text-muted-foreground sm:text-lg">Made with love to celebrate your special day. I hope you will like it ♡</p>
+          <TypedLine text="Falak, this whole little page was made only for you ♡" className="mx-auto mt-6 justify-center font-script text-3xl text-primary sm:text-4xl" />
+          <p className="mx-auto mt-5 max-w-xl text-base leading-8 text-muted-foreground sm:text-lg">Made with love to celebrate your special day. I hope you will like it ♡</p>
           <Button variant="love" size="lg" className="mt-10" onClick={() => { fireConfetti(1.4); scrollTo("memories"); }}>
             Do you want to see more? <span className="text-lg" aria-hidden="true">୨୧</span>
           </Button>
@@ -103,10 +106,13 @@ function Index() {
         </div>
       </section>
 
-      <section id="memories" className="reveal-section relative z-10 px-6 py-24 md:py-32">
+      <LaceEdge />
+
+      <section id="memories" className="wash-blush reveal-section relative z-10 px-6 py-24 md:py-32">
+        <HeartSketch className="right-[6%] top-[8%] hidden lg:block" />
         <div className="mx-auto max-w-6xl">
           <header className="mb-14 text-center"><p className="section-kicker">A few pieces of you</p><h2 className="section-title">Your sweetest smile</h2></header>
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
             {memories.map((caption, index) => (
               <article key={caption} className={`polaroid ${index % 2 === 0 ? "rotate-left" : "rotate-right"}`}>
                 <div className="photo-placeholder"><span className="text-3xl text-primary/25" aria-hidden="true">♡</span></div>
@@ -117,29 +123,49 @@ function Index() {
         </div>
       </section>
 
-      <section id="video" className="reveal-section relative z-10 bg-secondary/45 px-6 py-24 md:py-32">
+      <LaceEdge flipped />
+
+      <section id="video" className="wash-rose reveal-section relative z-10 px-6 py-24 md:py-32">
+        <RibbonSketch className="left-[6%] bottom-[10%] hidden lg:block" />
         <div className="mx-auto max-w-4xl text-center">
           <p className="section-kicker">Press play when you’re ready</p><h2 className="section-title">A little something for you <Video className="ml-2 inline h-7 w-7 text-primary" aria-hidden="true" /></h2>
           <div className="video-frame mt-10"><div className="flex aspect-video flex-col items-center justify-center gap-4 rounded-3xl bg-muted/55 text-primary"><span className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-love"><Play className="ml-1 h-7 w-7" fill="currentColor" /></span><div><p className="font-semibold">Add your video here</p><p className="mt-1 text-sm text-muted-foreground">A favorite clip, message, or montage</p></div></div></div>
         </div>
       </section>
 
-      <section id="letter" className="reveal-section relative z-10 px-6 py-24 md:py-32">
+      <LaceEdge />
+
+      <section id="letter" className="wash-blush reveal-section relative z-10 px-6 py-24 md:py-32">
+        <FlowerSketch className="left-[5%] top-[10%] hidden lg:block" />
         <div className="mx-auto max-w-3xl">
           <header className="mb-10 text-center"><p className="section-kicker">Words I wanted you to keep</p><h2 className="section-title">A letter for Falak</h2></header>
-          <article className="letter-paper">
-            <span className="absolute right-8 top-7 text-3xl text-primary/60" aria-hidden="true">♡</span>
-            <p className="font-script text-4xl text-primary">My dearest Falak,</p>
-            <div className="mt-7 space-y-5 text-base leading-8 text-muted-foreground sm:text-lg">
-              <p>Some people make life brighter simply by being in it. You are one of those rare people—the kind whose presence feels like a favorite song and whose kindness stays long after the moment has passed.</p>
-              <p>On your birthday, I hope you remember how deeply you are appreciated. May this next chapter bring soft mornings, loud laughter, brave dreams, and a hundred little reasons to smile.</p>
+          {!letterOpen ? (
+            <div className="text-center">
+              <div className={`envelope ${letterOpen ? "is-open" : ""}`} role="button" tabIndex={0} aria-label="Open the letter" onClick={() => setLetterOpen(true)} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); setLetterOpen(true); } }}>
+                <span className="envelope-flap" aria-hidden="true" />
+                <span className="envelope-seal" aria-hidden="true"><Heart className="h-6 w-6 fill-current" /></span>
+                <span className="envelope-label">Open me</span>
+              </div>
+              <p className="mt-5 text-sm text-muted-foreground">Tap the envelope to unseal your letter.</p>
             </div>
-            <div className="mt-10 text-right"><p className="text-sm text-muted-foreground">Signed with love,</p><p className="mt-1 font-script text-4xl text-primary">Always yours ♡</p><p className="mt-2 font-script text-3xl text-primary">Farhaan</p></div>
-          </article>
+          ) : (
+            <article className="letter-paper animate-fade-in">
+              <span className="absolute right-8 top-7 text-3xl text-primary/60" aria-hidden="true">♡</span>
+              <p className="font-script text-4xl text-primary">My dearest Falak,</p>
+              <div className="mt-7 space-y-5 text-base leading-8 text-muted-foreground sm:text-lg">
+                <p>Some people make life brighter simply by being in it. You are one of those rare people—the kind whose presence feels like a favorite song and whose kindness stays long after the moment has passed.</p>
+                <p>On your birthday, I hope you remember how deeply you are appreciated. May this next chapter bring soft mornings, loud laughter, brave dreams, and a hundred little reasons to smile.</p>
+              </div>
+              <div className="mt-10 text-right"><p className="text-sm text-muted-foreground">Signed with love,</p><p className="mt-1 font-script text-4xl text-primary">Always yours ♡</p><p className="mt-2 font-script text-3xl text-primary">Farhaan</p></div>
+            </article>
+          )}
         </div>
       </section>
 
-      <section id="reasons" className="reveal-section relative z-10 bg-secondary/45 px-6 py-24 md:py-32">
+      <LaceEdge flipped />
+
+      <section id="reasons" className="wash-rose reveal-section relative z-10 px-6 py-24 md:py-32">
+        <HeartSketch className="left-[7%] bottom-[12%] hidden lg:block" />
         <div className="mx-auto max-w-5xl text-center">
           <p className="section-kicker">A tiny extra surprise</p><h2 className="section-title">Reasons I love you</h2><p className="section-copy">Tap each note to unfold a little reason.</p>
           <div className="mt-12 grid gap-5 sm:grid-cols-2">
@@ -153,10 +179,21 @@ function Index() {
         </div>
       </section>
 
-      <footer className="relative z-10 overflow-hidden px-6 py-24 text-center">
-        <div className="rising-hearts" aria-hidden="true"><span>♡</span><span>♡</span><span>♥</span><span>♡</span><span>♡</span></div>
-        <Video className="mx-auto mb-5 h-5 w-5 text-primary/50" aria-hidden="true" />
-        <p className="font-script text-4xl text-primary">For Falak, with all my heart</p><p className="mt-3 flex items-center justify-center gap-1.5 text-sm text-muted-foreground">Made with <Heart className="h-4 w-4 fill-current text-primary" aria-label="love" /> and a little bit of magic.</p>
+      <LaceEdge />
+
+      <footer className="wash-cream relative z-10 overflow-hidden px-6 py-24 text-center">
+        {candleOut && <div className="rising-hearts" aria-hidden="true"><span>♡</span><span>♡</span><span>♥</span><span>♡</span><span>♡</span></div>}
+        <p className="section-kicker">{candleOut ? "Wish granted ♡" : "One last thing"}</p>
+        <h2 className="section-title mb-10">{candleOut ? "Happy birthday, my love" : "Make a wish"}</h2>
+        <button type="button" aria-pressed={candleOut} aria-label={candleOut ? "Candle blown out" : "Blow out the candle"} className="mx-auto block rounded-3xl px-6 pb-4 pt-10 transition-transform hover:-translate-y-1" onClick={() => { if (!candleOut) { setCandleOut(true); fireConfetti(1.2); } }}>
+          <span className="candle block">
+            {candleOut ? <span className="candle-smoke" aria-hidden="true" /> : <span className="candle-flame" aria-hidden="true" />}
+            <span className="candle-wick" aria-hidden="true" />
+            <span className="candle-body block" aria-hidden="true" />
+          </span>
+          <span className="mt-5 block text-sm text-muted-foreground">{candleOut ? "You blew it out — hold on to that wish ♡" : "Tap the candle and close your eyes"}</span>
+        </button>
+        <p className="mt-14 font-script text-4xl text-primary">For Falak, with all my heart</p><p className="mt-3 flex items-center justify-center gap-1.5 text-sm text-muted-foreground">Made with <Heart className="h-4 w-4 fill-current text-primary" aria-label="love" /> and a little bit of magic.</p>
       </footer>
     </main>
   );

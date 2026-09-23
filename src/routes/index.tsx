@@ -61,6 +61,7 @@ function Index() {
 
   return (
     <main className="crochet-bg relative overflow-hidden bg-background font-body text-foreground">
+      <Confetti />
       <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
         <span className="float-doodle left-[8%] top-[16%]">♡</span>
         <span className="float-doodle float-delay left-[82%] top-[27%]">✿</span>

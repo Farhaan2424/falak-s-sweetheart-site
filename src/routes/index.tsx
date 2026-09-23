@@ -92,7 +92,7 @@ function Index() {
           <div className="mb-5 text-4xl animate-gentle-bob" aria-hidden="true">୨୧</div>
           <h1 className="font-script text-6xl leading-[1.08] text-primary sm:text-7xl md:text-8xl lg:text-9xl">Happy Birthday Falak <Heart className="ml-2 inline h-[.52em] w-[.52em] fill-current align-middle" aria-label="with love" /></h1>
           <p className="mx-auto mt-7 max-w-xl text-base leading-8 text-muted-foreground sm:text-lg">Made with love to celebrate your special day. I hope you will like it ♡</p>
-          <Button variant="love" size="lg" className="mt-10" onClick={() => scrollTo("memories")}>
+          <Button variant="love" size="lg" className="mt-10" onClick={() => { fireConfetti(1.4); scrollTo("memories"); }}>
             Do you want to see more? <span className="text-lg" aria-hidden="true">୨୧</span>
           </Button>
           <div className="mt-12 flex flex-col items-center gap-2 text-xs uppercase tracking-[0.18em] text-muted-foreground"><div className="flex items-center gap-3"><span className="h-px w-12 bg-border" /> go ahead, see <span className="h-px w-12 bg-border" /></div><ChevronDown className="h-4 w-4 animate-gentle-bob text-primary" aria-hidden="true" /></div>

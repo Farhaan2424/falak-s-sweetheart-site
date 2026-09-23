@@ -59,7 +59,7 @@ export function Confetti() {
           size: 5 + Math.random() * 7,
           rot: Math.random() * Math.PI,
           vr: (Math.random() - 0.5) * 0.14,
-          color: COLORS[Math.floor(Math.random() * COLORS.length)],
+          color: COLORS[Math.floor(Math.random() * COLORS.length)] ?? "#f6a8c0",
           shape: Math.random() < 0.34 ? "circle" : Math.random() < 0.6 ? "ribbon" : "rect",
         });
       }

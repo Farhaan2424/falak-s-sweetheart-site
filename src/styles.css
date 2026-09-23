@@ -191,6 +191,49 @@
 @keyframes gentle-bob { 0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-6px) rotate(4deg)} }
 @utility animate-gentle-bob { animation: gentle-bob 3.5s ease-in-out infinite; }
 
+/* Section washes — the page shifts gently between cream and blush */
+.wash-cream { background: linear-gradient(180deg, color-mix(in oklab, var(--muted) 65%, var(--background)) 0%, var(--background) 65%, color-mix(in oklab, var(--secondary) 35%, var(--background)) 100%); }
+.wash-blush { background: linear-gradient(180deg, color-mix(in oklab, var(--secondary) 60%, var(--background)) 0%, color-mix(in oklab, var(--accent) 22%, var(--background)) 55%, var(--background) 100%); }
+.wash-rose { background: linear-gradient(180deg, var(--background) 0%, color-mix(in oklab, var(--secondary) 55%, var(--background)) 50%, color-mix(in oklab, var(--muted) 55%, var(--background)) 100%); }
+
+/* Lace edging between sections */
+.lace-edge { position: relative; height: 22px; width: 100%; }
+.lace-edge::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(circle at 11px 4px, color-mix(in oklab, var(--primary) 26%, transparent) 5px, transparent 6px); background-size: 22px 22px; background-repeat: repeat-x; }
+.lace-edge::after { content: ""; position: absolute; left: 0; right: 0; top: 3px; height: 1px; background: color-mix(in oklab, var(--primary) 20%, transparent); }
+.lace-edge.is-flipped { transform: rotate(180deg); }
+
+/* Hand-drawn sketches tucked into corners */
+.sketch { position: absolute; color: color-mix(in oklab, var(--primary) 34%, transparent); pointer-events: none; }
+
+/* Typed greeting */
+.typed-line { display: inline-flex; align-items: baseline; min-height: 1.8em; }
+.typed-caret { display: inline-block; width: 2px; height: 1em; margin-left: 3px; background: var(--primary); animation: caret-blink 1s steps(1) infinite; }
+@keyframes caret-blink { 0%, 49% { opacity: 1 } 50%, 100% { opacity: 0 } }
+
+/* Taped polaroid corners + gentle tilt-up */
+.polaroid { position: relative; }
+.polaroid::before { content: ""; position: absolute; left: 50%; top: -.6rem; width: 3.6rem; height: 1.1rem; transform: translateX(-50%) rotate(-4deg); border: 1px solid color-mix(in oklab, var(--border) 55%, transparent); border-radius: 3px; background: color-mix(in oklab, var(--muted) 80%, transparent); opacity: .85; }
+.polaroid:hover { transform: perspective(700px) rotateX(5deg) translateY(-10px) scale(1.02); }
+
+/* Envelope */
+.envelope { position: relative; margin: 0 auto; width: min(30rem, 100%); aspect-ratio: 3 / 2; border: 1px solid var(--border); border-radius: 1.1rem; background: linear-gradient(165deg, color-mix(in oklab, var(--secondary) 70%, var(--card)), var(--card)); box-shadow: var(--shadow-love); cursor: pointer; overflow: hidden; transition: transform .35s ease, box-shadow .35s ease; }
+.envelope:hover { transform: translateY(-6px); box-shadow: var(--shadow-love-lg); }
+.envelope-flap { position: absolute; left: 0; right: 0; top: 0; height: 62%; transform-origin: top center; background: linear-gradient(175deg, color-mix(in oklab, var(--accent) 80%, var(--card)), color-mix(in oklab, var(--secondary) 90%, var(--card))); clip-path: polygon(0 0, 100% 0, 50% 100%); transition: transform .8s cubic-bezier(.3,.7,.25,1); }
+.envelope.is-open .envelope-flap { transform: rotateX(178deg); }
+.envelope-seal { position: absolute; left: 50%; top: 52%; display: flex; height: 3.1rem; width: 3.1rem; transform: translate(-50%, -50%); align-items: center; justify-content: center; border-radius: 999px; background: var(--primary); color: var(--primary-foreground); box-shadow: var(--shadow-love); }
+.envelope-label { position: absolute; bottom: 1.1rem; left: 0; right: 0; text-align: center; font-size: .7rem; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; color: var(--muted-foreground); }
+
+/* Birthday candle */
+.candle { position: relative; margin: 0 auto; width: 2.1rem; }
+.candle-body { height: 5.2rem; border-radius: .45rem .45rem .2rem .2rem; background: linear-gradient(180deg, color-mix(in oklab, var(--accent) 65%, var(--card)), var(--card)); border: 1px solid var(--border); box-shadow: var(--shadow-soft); }
+.candle-wick { position: absolute; left: 50%; top: -.45rem; height: .5rem; width: 2px; transform: translateX(-50%); background: color-mix(in oklab, var(--foreground) 55%, transparent); }
+.candle-flame { position: absolute; left: 50%; top: -1.9rem; height: 1.5rem; width: .85rem; transform: translateX(-50%); border-radius: 50% 50% 50% 50% / 62% 62% 38% 38%; background: linear-gradient(180deg, oklch(0.95 0.11 90), oklch(0.82 0.17 55)); box-shadow: 0 0 22px oklch(0.85 0.15 70 / .6); animation: flicker 1.6s ease-in-out infinite; }
+.candle-smoke { position: absolute; left: 50%; top: -1.4rem; width: 3px; height: 2.4rem; transform: translateX(-50%); border-radius: 999px; background: linear-gradient(180deg, transparent, color-mix(in oklab, var(--muted-foreground) 42%, transparent)); animation: smoke 2.4s ease-out forwards; }
+@keyframes flicker { 0%,100%{transform:translateX(-50%) scaleY(1) rotate(-1deg)}50%{transform:translateX(-50%) scaleY(1.12) rotate(2deg)} }
+@keyframes smoke { 0%{opacity:.8;transform:translate(-50%,0) scaleY(.4)}100%{opacity:0;transform:translate(-50%,-3.5rem) scaleY(1.4)} }
+
+@media (prefers-reduced-motion: reduce) { .candle-flame, .typed-caret { animation: none } .envelope-flap { transition: none } }
+
 .print-sheet-wrap { margin: 0 auto 3rem; width: min(94vw, 70rem); }
 .print-sheet-label { margin-bottom: .65rem; font-size: .75rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--muted-foreground); }
 .print-sheet { display: grid; grid-template-columns: 1fr 1fr; aspect-ratio: 297 / 210; overflow: hidden; background: var(--background); box-shadow: var(--shadow-love-lg); }

@@ -6,6 +6,14 @@ import { Confetti, fireConfetti } from "@/components/Confetti";
 import { FlowerSketch, HeartSketch, LaceEdge, RibbonSketch } from "@/components/Sketches";
 import { TypedLine } from "@/components/TypedLine";
 import { Button } from "@/components/ui/button";
+import p1 from "@/assets/falak-1.jpg.asset.json";
+import p2 from "@/assets/falak-2.jpg.asset.json";
+import p3 from "@/assets/falak-3.jpg.asset.json";
+import p4 from "@/assets/falak-4.jpg.asset.json";
+import p5 from "@/assets/falak-5.jpg.asset.json";
+import p6 from "@/assets/falak-6.jpg.asset.json";
+
+const photos = [p1, p2, p3, p4, p5, p6];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -57,7 +65,7 @@ function Index() {
           setActiveSection(entry.target.id);
         }
       }),
-      { threshold: 0.3 },
+      { threshold: 0.05 },
     );
     nodes.forEach((node) => observer.observe(node));
     return () => observer.disconnect();
@@ -115,7 +123,7 @@ function Index() {
           <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
             {memories.map((caption, index) => (
               <article key={caption} className={`polaroid ${index % 2 === 0 ? "rotate-left" : "rotate-right"}`}>
-                <div className="photo-placeholder"><span className="text-3xl text-primary/25" aria-hidden="true">♡</span></div>
+                <img src={photos[index]?.url} alt={`Falak — ${caption}`} loading="lazy" className="aspect-[4/5] w-full rounded-2xl object-cover" />
                 <p className="mt-4 text-center font-medium text-foreground">{caption} <span className="text-primary" aria-hidden="true">♡</span></p>
               </article>
             ))}

@@ -246,7 +246,7 @@
 .print-front-panel::before { left: -2.5rem; top: -2.5rem; }
 .print-front-panel::after { bottom: -2.5rem; right: -2.5rem; }
 .print-front-ornament { font-size: 2.25rem; color: var(--primary); }
-.print-inside-left { background: var(--secondary); }
+.print-inside-left { background: var(--secondary); align-items: stretch; justify-content: flex-start; }
 .print-letter-panel { align-items: stretch; background: var(--card); }
 .print-photo-space { display: flex; aspect-ratio: 4 / 3; flex-direction: column; align-items: center; justify-content: center; gap: .35rem; border: 1px dashed var(--border); border-radius: .75rem; background: color-mix(in oklab, var(--card) 72%, transparent); color: var(--primary); font-size: .7rem; font-weight: 700; text-align: center; }
 .print-photo-space small { font-size: .6rem; font-weight: 500; color: var(--muted-foreground); }
@@ -262,4 +262,46 @@
   .print-sheet-wrap:last-child { break-after: auto; page-break-after: auto; }
   .print-sheet { width: 297mm; height: 210mm; aspect-ratio: auto; box-shadow: none; }
   .print-panel { width: 148.5mm; height: 210mm; }
+
+  /* MOBILE PRINT FIX: stop clipping and force panels/images to fit reliably */
+  .print-panel {
+    overflow: visible !important;
+    height: auto !important;
+    min-height: 210mm;
+  }
+  .print-inside-left img {
+    aspect-ratio: 1 / 1;
+    max-height: 45mm;
+    width: 100%;
+    object-fit: cover;
+  }
+  .print-sheet {
+    width: 297mm !important;
+    height: 210mm !important;
+  }
 }
+
+/* Opening screen */
+.opening-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, var(--background), var(--secondary) 55%, var(--accent));
+  cursor: pointer;
+  transition: opacity .7s ease, transform .7s ease;
+}
+.opening-overlay.is-opening { opacity: 0; transform: scale(1.06); pointer-events: none; }
+.opening-overlay-inner { text-align: center; padding: 2rem; }
+.opening-ribbon { display: inline-block; font-size: 3.5rem; animation: gentle-bob 3s ease-in-out infinite; }
+.opening-kicker { margin-top: 1rem; font-size: .78rem; font-weight: 700; letter-spacing: .26em; text-transform: uppercase; color: var(--primary); }
+.opening-title { margin-top: .4rem; font-family: var(--font-script); font-size: clamp(3.5rem, 12vw, 6rem); color: var(--foreground); }
+.opening-hint { margin-top: 1.4rem; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted-foreground); animation: gentle-bob 2.6s ease-in-out infinite; }
+
+/* Scratch cards */
+.scratch-card { position: relative; height: 14rem; border-radius: 1.5rem; overflow: hidden; box-shadow: var(--shadow-soft); background: var(--card); }
+.scratch-card-content { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .8rem; padding: 1.5rem; text-align: center; border: 1px solid var(--border); border-radius: 1.5rem; }
+.scratch-canvas { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: none; cursor: grab; transition: opacity .5s ease; }
+.scratch-canvas.is-revealed { opacity: 0; }

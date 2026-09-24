@@ -1,7 +1,9 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { ArrowLeft, Heart, Image, Printer, Sparkles } from "lucide-react";
+import { ArrowLeft, Heart, Printer, Sparkles } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import falak1 from "@/assets/falak-1.jpg.jpg";
+import falak2 from "@/assets/falak-2.jpg.jpg";
 
 export const Route = createFileRoute("/print")({
   head: () => ({
@@ -19,16 +21,6 @@ export const Route = createFileRoute("/print")({
 
 const reasons = ["Your kindness", "Your laugh", "The little things", "Simply you"];
 
-function PhotoSpace({ label }: { label: string }) {
-  return (
-    <div className="print-photo-space">
-      <Image className="h-7 w-7" strokeWidth={1.4} aria-hidden="true" />
-      <span>Add your photo here</span>
-      <small>{label}</small>
-    </div>
-  );
-}
-
 function PrintableCard() {
   return (
     <main className="print-card-page min-h-screen bg-muted font-body text-foreground">
@@ -37,14 +29,14 @@ function PrintableCard() {
           <Button variant="ghost" asChild>
             <Link to="/" aria-label="Back to birthday page"><ArrowLeft /> Back</Link>
           </Button>
-          <p className="hidden text-sm text-muted-foreground sm:block">A4 landscape · double-sided · flip on short edge</p>
+          <p className="hidden text-sm text-muted-foreground sm:block"></p>
           <Button variant="love" onClick={() => window.print()}><Printer /> Print card</Button>
         </div>
       </div>
 
       <div className="print-instructions mx-auto max-w-5xl px-6 py-8 text-center">
-        <p className="font-semibold">Print both pages at 100% scale, double-sided, then fold down the center.</p>
-        <p className="mt-1 text-sm text-muted-foreground">Choose “flip on short edge” in your printer settings.</p>
+        <p className="font-semibold"></p>
+        <p className="mt-1 text-sm text-muted-foreground"></p>
       </div>
 
       <div className="print-sheet-wrap">
@@ -73,8 +65,8 @@ function PrintableCard() {
           <article className="print-panel print-inside-left">
             <p className="text-xs font-bold uppercase text-primary">A few pieces of you</p>
             <div className="mt-5 grid w-full grid-cols-2 gap-4">
-              <PhotoSpace label="Memory one" />
-              <PhotoSpace label="Memory two" />
+              <img src={falak1} alt="Memory one" className="aspect-square w-full rounded-xl object-cover shadow-soft" />
+              <img src={falak2} alt="Memory two" className="aspect-square w-full rounded-xl object-cover shadow-soft" />
             </div>
             <p className="mt-6 font-script text-4xl text-primary">Reasons I love you</p>
             <div className="mt-4 grid grid-cols-2 gap-x-5 gap-y-3">
@@ -83,12 +75,27 @@ function PrintableCard() {
               ))}
             </div>
           </article>
-          <article className="print-panel print-letter-panel">
+          <article className="print-panel print-letter-panel" style={{ height: "auto", maxHeight: "none", overflow: "visible" }}>
             <Sparkles className="absolute right-8 top-8 h-5 w-5 text-primary/60" aria-hidden="true" />
             <p className="font-script text-4xl text-primary">My dearest Falak,</p>
-            <div className="mt-6 space-y-4 text-sm leading-7 text-muted-foreground">
-              <p>Some people make life brighter simply by being in it. You are one of those rare people—the kind whose presence feels like a favorite song and whose kindness stays long after the moment has passed.</p>
-              <p>On your birthday, I hope this next chapter brings soft mornings, loud laughter, brave dreams, and a hundred little reasons to smile.</p>
+            <div className="mt-4 space-y-2" style={{ fontSize: "9px", lineHeight: "1.35" }}>
+              <p className="text-muted-foreground">Happiest birthday Falak 😘💗 It's one of the most special days for me because it's the day you came into this world 🫠🫂 You are my home you are the love of my life in you I have found the biggest blessing of my life 🥹🫂 I am so grateful that you chose me as your partner I am the luckiest man because I have a girl like you 🫠🫂 I am so grateful to Allah that He made me yours I love you with all my heart 😘💗</p>
+
+              <p className="text-muted-foreground">You are the sweetest girl I have ever met I can't express in words what I feel for you but I hope you understand 😘🫂 You have eyes that make me fall in love every time I see them 🥹💗 I love every single thing about you You were my crush and you will forever be my crush and I feel so happy about the fact that I'm in a relationship with my crush You are my dream girl the one I always imagined 🫠😘</p>
+
+              <p className="text-muted-foreground">You have loved me exactly like I always wanted Sometimes my eyes fill with tears of happiness after seeing your love for me 🥹🥹 I love you more than anything in the world I know the trust you have in me you trust me blindly and In Sha Allah I will never break that trust I will always love you the same way I do today 😘🫂 You are my home my safe place and with every passing day my love for you grows more and more 🫠😌</p>
+
+              <p className="text-muted-foreground">Last birthday I was hoping that by this one I would be able to tell you how much I love you and what you mean to me This year Alhamdulillah I got that chance I still don't think I can fully express my love and my feelings for you in words but I hope my actions do 😘🫂</p>
+
+              <p className="text-muted-foreground">I hope when you see this website and this message your face lights up with a beautiful smile 😘😘 You are the sweetest girl and In Sha Allah I will never hurt you I will always take care of you I will listen when you talk I will always be there for you through every difficult situation I am all yours Falak 🫠🫂🫂</p>
+
+              <p className="text-muted-foreground">When I came to Ahmedabad and you were sitting in yellow dress in hall I was just starring at you I fell in love more and more every single time I saw you 🫠🫂</p>
+
+              <p className="text-muted-foreground">And like I always say I hope we celebrate all your future birthdays together In Sha Allah 🥹🫂</p>
+
+              <p className="text-muted-foreground">Happiest birthday my baby girl Thank you for always being there for me I hope all your wishes come true... Ameen Stay happy my baby Allah Umar Daraz Kare Ameen ❤️</p>
+
+              <p className="text-muted-foreground">I love you I love you And I will love you forever and ever 😘😘😘</p>
             </div>
             <div className="mt-7 text-right">
               <p className="text-xs text-muted-foreground">Signed with love,</p>
